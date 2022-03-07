@@ -38,5 +38,23 @@ class Order: ObservableObject {
         return true 
     }
     
-    
+    var cost: Double {
+        // $2 per cake
+        var cost = Double(quantity) * 2
+        
+        // complex cake cost more --> Based on Enum --> Not good
+        cost += (Double(type) / 2)
+        
+        // $1/ cake extra frosting
+        if extraFrosting {
+            cost += Double(quantity)
+        }
+        
+        // $0.50/ cake for sprinkles
+        if addSprinkles {
+            cost += Double(quantity) / 2
+        }
+        
+        return cost
+    }
 }
